@@ -15,7 +15,7 @@ RUN curl -sLo - ${OWNCLOUD_TARBALL} | tar xfj - -C /var/www/
 RUN curl -sLo richdocuments.tar.gz ${RICHDOCUMENTS_TARBALL} && \
   echo "$RICHDOCUMENTS_CHECKSUM richdocuments.tar.gz" | sha256sum -c - && \
   mkdir -p /var/www/owncloud/apps/richdocuments && \
-  tar -C /var/www/owncloud/apps/richdocuments --strip-components 1 -xfz richdocuments.tar.gz && \
+  tar xfz richdocuments.tar.gz -C /var/www/owncloud/apps/richdocuments --strip-components 1 && \
   rm -f richdocuments.tar.gz
 
 RUN find /var/www/owncloud \( \! -user www-data -o \! -group www-data \) -print0 | xargs -r -0 chown www-data:www-data
