@@ -1,4 +1,4 @@
-FROM owncloud/base:latest
+FROM 016526250478.dkr.ecr.us-west-1.amazonaws.com/oss-owncloud:base
 MAINTAINER ownCloud DevOps <devops@owncloud.com>
 
 ARG VERSION
