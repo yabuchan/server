@@ -20,6 +20,11 @@ RUN curl -sLo user_ldap.tar.gz ${LDAP_TARBALL} && \
 
 RUN sed -i -e 's/*:80/*:32180/g' core/doc/admin/_sources/configuration/server/harden_server.txt
 RUN sed -i -e 's/*:80/*:32180/g' core/doc/admin/configuration/server/harden_server.html
+RUN sed -i -e 's/*:80/*:32180/g' /etc/apache2/sites-enabled/000-default.conf
+RUN sed -i -e 's/*:80/*:32180/g' /etc/apache2/sites-available/000-default.conf
+RUN sed -i -e 's/*:80/*:32180/g' /root/owncloud/subpath.conf
+RUN sed -i -e 's/*:80/*:32180/g' /root/owncloud/toppath.conf
+RUN sed -i -e 's/*:80/*:32180/g' 
 
 RUN find /var/www/owncloud \( \! -user www-data -o \! -group www-data \) -print0 | xargs -r -0 chown www-data:www-data
 
