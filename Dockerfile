@@ -18,6 +18,9 @@ RUN curl -sLo user_ldap.tar.gz ${LDAP_TARBALL} && \
   tar xfz user_ldap.tar.gz -C /var/www/owncloud/apps/user_ldap --strip-components 1 && \
   rm -f user_ldap.tar.gz
 
+RUN sed -i -e 's/*:80/*:32180/g' core/doc/admin/_sources/configuration/server/harden_server.txt
+RUN sed -i -e 's/*:80/*:32180/g' core/doc/admin/configuration/server/harden_server.html
+
 RUN find /var/www/owncloud \( \! -user www-data -o \! -group www-data \) -print0 | xargs -r -0 chown www-data:www-data
 
 LABEL org.label-schema.version=$VERSION
